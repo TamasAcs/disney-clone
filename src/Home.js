@@ -2,54 +2,52 @@ import React from "react";
 import Header from "./Header";
 import "./Home.css";
 import Slider from "./ImgSlider";
-import Recommended from "./Recommended";
 import Suggested from "./Suggested";
-import NewDisney from "./NewDisney";
-import Trending from "./Trending";
-import Originals from "./Originals";
+import Cakes from "./Cakes";
+import Biscuit from "./Biscuits";
+import Dessert from "./Dessert";
+import Other from "./Other";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import db from "./firebase";
-import { setMovies } from "./features/movie/movieSlice";
-import { selectUserName } from "./features/userSlice";
+import { setCakes } from "./features/cake/cakeSlice";
 
 function Home(props) {
   const dispatch = useDispatch();
-  const userName = useSelector(selectUserName);
-  let recommends = [];
-  let newDisneys = [];
-  let originals = [];
-  let trending = [];
+  let cakes = [];
+  let biscuits = [];
+  let dessert = [];
+  let other = [];
 
   useEffect(() => {
-    db.collection("movies").onSnapshot((snapshot) => {
+    db.collection("cakes").onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
         switch (doc.data().type) {
           case "recommend":
-            recommends = [...recommends, { id: doc.id, ...doc.data() }];
+            cakes = [...cakes, { id: doc.id, ...doc.data() }];
             break;
           case "new":
-            newDisneys = [...newDisneys, { id: doc.id, ...doc.data() }];
+            biscuits = [...biscuits, { id: doc.id, ...doc.data() }];
             break;
           case "original":
-            originals = [...originals, { id: doc.id, ...doc.data() }];
+            dessert = [...dessert, { id: doc.id, ...doc.data() }];
             break;
-          case "trending":
-            trending = [trending, { id: doc.id, ...doc.data() }];
+          case "other":
+            other = [...other, { id: doc.id, ...doc.data() }];
             break;
         }
       });
 
       dispatch(
-        setMovies({
-          recommend: recommends,
-          newDisney: newDisneys,
-          original: originals,
-          trending: trending,
+        setCakes({
+          cakes: cakes,
+          biscuits: biscuits,
+          dessert: dessert,
+          other: other,
         })
       );
     });
-  }, [userName]);
+  }, []);
 
   return (
     <div className="home">
@@ -57,10 +55,11 @@ function Home(props) {
       <div className="home__body">
         <Slider />
         <Suggested />
-        <Recommended />
-        <NewDisney />
-        <Trending />
-        <Originals />
+        <Cakes />
+        <Biscuit />
+        <Dessert />
+        <Other />
+        
       </div>
     </div>
   );

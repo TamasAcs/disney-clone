@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Originals.css";
+import "./Dessert.css";
 import { useSelector } from "react-redux";
-import { selectOriginal } from "./features/movie/movieSlice";
+import { selectDessert } from "./features/cake/cakeSlice";
 
 function Originals() {
-  const movies = useSelector(selectOriginal);
+  const cakes = useSelector(selectDessert);
 
   return (
     <div className="originals">
-      <h3>Originals</h3>
+      <h3>Dessert</h3>
       <div className="originals__row">
-        {movies &&
-          movies.map((movie, key) => (
+        {cakes &&
+          cakes.map((cake, key) => (
             <div className="originals__card" key={key}>
-              <Link to={`/detail/` + movie.id}>
+              <Link to={`/detail/` + cake.id}>
                 <img
                   className="originals__image"
-                  src={movie.cardImg}
-                  alt={movie.title}
+                  src={cake.cardImg}
+                  alt={cake.title}
                 />
               </Link>
             </div>

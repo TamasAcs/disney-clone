@@ -12,7 +12,7 @@ function Detail(props) {
   const [detailData, setDetailData] = useState({});
 
   useEffect(() => {
-    db.collection("movies")
+    db.collection("cakes")
       .doc(id)
       .get()
       .then((doc) => {

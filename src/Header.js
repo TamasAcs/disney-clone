@@ -1,9 +1,5 @@
-import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
-import { logout, selectUser } from "./features/userSlice";
-import { auth } from "./firebase";
 import logo from "./images/logo.png";
 import homeIcon from "./images/home-icon.svg";
 import searchIcon from "./images/search-icon.svg";
@@ -14,8 +10,6 @@ import seriesIcon from "./images/series-icon.svg";
 import { useHistory } from "react-router";
 
 function Header() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
   const history = useHistory();
   const [show, handleShow] =useState(false)
 
@@ -32,12 +26,6 @@ function Header() {
     return () => window.removeEventListener("scroll", transitionHeader);
   }, []);
 
-  const signOut = () => {
-    auth.signOut().then(() => {
-      dispatch(logout());
-    });
-    history.push("/");
-  };
 
   return (
     <div className={`header ${show && "header__black"}`}>
@@ -76,11 +64,6 @@ function Header() {
         </div>
       </div>
       <div className="header__right">
-        <Avatar
-          src={user?.photoUrl}
-          className="header__avatar"
-        />
-        <div onClick={signOut} className="header__dropdown">Sign Out</div>
       </div>
     </div>
   );

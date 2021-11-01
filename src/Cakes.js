@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Recommended.css";
+import "./Cakes.css";
 import { useSelector } from "react-redux";
-import { selectRecommend } from "./features/movie/movieSlice";
+import { selectCakes } from "./features/cake/cakeSlice";
 
 function Recommended(props) {
-  const movies = useSelector(selectRecommend);
+  const cakes = useSelector(selectCakes);
 
   return (
     <div className="recommended">
-      <h3>Recommended For You</h3>
+      <h3>Cakes For You</h3>
       <div className="recommended__row">
-      {movies &&
-          movies.map((movie, key) => (
+      {cakes &&
+          cakes.map((cake, key) => (
             <div className="recommended__card" key={key}>
-              <Link to={`/detail/` + movie.id}>
-                <img className="recommended__image" src={movie.cardImg} alt={movie.title} />
+              <Link to={`/detail/` + cake.id}>
+                <img className="recommended__image" src={cake.cardImg} alt={cake.title} />
               </Link>
             </div>
           ))}

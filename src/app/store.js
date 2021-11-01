@@ -1,11 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import userReducer from "../features/userSlice";
-import movieReducer from "../features/movie/movieSlice";
+import cakeReducer from "../features/cake/cakeSlice";
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
-    movie: movieReducer,
+    cake: cakeReducer,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: false,
