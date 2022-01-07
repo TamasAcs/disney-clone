@@ -1,5 +1,9 @@
 .imgSlider__carousel {
   margin-top: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 .slick-next,
 .slick-prev {
@@ -26,24 +30,26 @@
 }
 .imgSlider__wrap {
   border-radius: 4px;
-  cursor: pointer;
+  cursor: inherit;
   position: relative;
 }
 .imgSlider__wrapEach {
   border-radius: 4px;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
     rgb(0 0 0 / 73%) 0px 16px 10px -10px;
-  cursor: pointer;
+  cursor: inherit;
   display: block;
   position: relative;
   padding: 4px;
 }
 .imgSlider__wrapEach > img {
   width: 100%;
-  height: 100%;
+  height: 80vh;
 }
-.imgSlider__wrapEach:hover {
-  padding: 0;
-  border: 4px solid rgba(249, 249, 249, 0.8);
-  transition-duration: 200ms;
+
+
+@media only screen and (max-width: 768px){
+  .imgSlider__wrapEach > img {
+    height: auto;
+  }
 }

@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import logo from "./images/logo.png";
-import homeIcon from "./images/home-icon.svg";
-import searchIcon from "./images/search-icon.svg";
-import watchListIcon from "./images/watchlist-icon.svg";
-import originalsIcon from "./images/original-icon.svg";
-import moviesIcon from "./images/movie-icon.svg";
-import seriesIcon from "./images/series-icon.svg";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useHistory } from "react-router";
+import MenuIcon from '@material-ui/icons/Menu';
 
 function Header() {
   const history = useHistory();
-  const [show, handleShow] =useState(false)
+  const [show, handleShow] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+const toggleNav = () => {
+  setToggleMenu(!toggleMenu)
+}
 
   const transitionHeader = () => {
     if (window.scrollY > 80) {
@@ -26,6 +28,13 @@ function Header() {
     return () => window.removeEventListener("scroll", transitionHeader);
   }, []);
 
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', changeWidth)
+  }, []);
+
 
   return (
     <div className={`header ${show && "header__black"}`}>
@@ -34,36 +43,22 @@ function Header() {
           <img onClick={() => history.push("/home")} src={logo} alt="logo" />
         </div>
       </div>
-      <div className="header__middle">
-        <div
-          onClick={() => history.push("/home")}
-          className="middle header__navHome"
-        >
-          <img className="header__navIcons" src={homeIcon} alt="logo" />
+      {(toggleMenu || screenWidth > 560) && (
+      <div className="header__right">
+        <div onClick={() => history.push("/home")} className="right">
           <h5>HOME</h5>
         </div>
-        <div className="middle header__navHSearch">
-          <img className="header__navIcons" src={searchIcon} alt="logo" />
-          <h5>SEARCH</h5>
+        <div onClick={() => history.push("/about")} className="right">
+          <h5>ABOUT US</h5>
         </div>
-        <div className="middle header__navWatchList">
-          <img className="header__navIcons" src={watchListIcon} alt="logo" />
-          <h5>WATCHLIST</h5>
-        </div>
-        <div className="middle header__navOriginals">
-          <img className="header__navIcons" src={originalsIcon} alt="logo" />
-          <h5>ORIGINALS</h5>
-        </div>
-        <div className="middle header__navMovies">
-          <img className="header__navIcons" src={moviesIcon} alt="logo" />
-          <h5>MOVIES</h5>
-        </div>
-        <div className="middle header__navSeries">
-          <img className="header__navIcons" src={seriesIcon} alt="logo" />
-          <h5>SERIES</h5>
+        <div onClick={() => history.push("/contact")} className="right">
+          <MailOutlineIcon className="header__navIcons" />
+          <h5>CONTACT US</h5>
         </div>
       </div>
-      <div className="header__right">
+      )}
+      <div className="header__menuIcon">
+      <MenuIcon onClick={toggleNav} className="header__menuIcon"/>
       </div>
     </div>
   );

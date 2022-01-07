@@ -3,6 +3,7 @@ import firebase from "firebase";
 const firebaseConfig = {
   apiKey: "AIzaSyDDSzvJg7PwiDUkFce9R2WOxsnWyCkAedw",
   authDomain: "react-bakery.firebaseapp.com",
+  databaseURL: "https://react-bakery-default-rtdb.firebaseio.com/",
   projectId: "react-bakery",
   storageBucket: "react-bakery.appspot.com",
   messagingSenderId: "397898577343",

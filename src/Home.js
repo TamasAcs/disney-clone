@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import "./Home.css";
 import Slider from "./ImgSlider";
 import Suggested from "./Suggested";
@@ -15,7 +16,7 @@ import { setCakes } from "./features/cake/cakeSlice";
 function Home(props) {
   const dispatch = useDispatch();
   let cakes = [];
-  let biscuits = [];
+  let biscuit = [];
   let dessert = [];
   let other = [];
 
@@ -23,13 +24,13 @@ function Home(props) {
     db.collection("cakes").onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
         switch (doc.data().type) {
-          case "recommend":
+          case "cakes":
             cakes = [...cakes, { id: doc.id, ...doc.data() }];
             break;
-          case "new":
-            biscuits = [...biscuits, { id: doc.id, ...doc.data() }];
+          case "biscuit":
+            biscuit = [...biscuit, { id: doc.id, ...doc.data() }];
             break;
-          case "original":
+          case "dessert":
             dessert = [...dessert, { id: doc.id, ...doc.data() }];
             break;
           case "other":
@@ -41,7 +42,7 @@ function Home(props) {
       dispatch(
         setCakes({
           cakes: cakes,
-          biscuits: biscuits,
+          biscuit: biscuit,
           dessert: dessert,
           other: other,
         })
@@ -61,6 +62,7 @@ function Home(props) {
         <Other />
         
       </div>
+      <Footer />
     </div>
   );
 }

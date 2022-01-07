@@ -4,19 +4,19 @@ import "./Biscuits.css";
 import { useSelector } from "react-redux";
 import { selectBiscuit } from "./features/cake/cakeSlice";
 
-function NewDisney() {
+function Biscuit() {
   const cakes = useSelector(selectBiscuit);
 
   return (
-    <div className="newDisney">
-      <h3>Biscuit</h3>
-      <div className="newDisney__row">
+    <div className="biscuit">
+      <p>Biscuit</p>
+      <div className="biscuit__row">
         {cakes &&
           cakes.map((cake, key) => (
-            <div className="newDisney__card" key={key}>
+            <div className="biscuit__card" key={key}>
               <Link to={`/detail/` + cake.id}>
                 <img
-                  className="newDisney__image"
+                  className="biscuit__image"
                   src={cake.cardImg}
                   alt={cake.title}
                 />
@@ -28,4 +28,4 @@ function NewDisney() {
   );
 }
 
-export default NewDisney;
+export default Biscuit;

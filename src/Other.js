@@ -4,19 +4,19 @@ import "./Other.css";
 import { useSelector } from "react-redux";
 import { selectOther } from "./features/cake/cakeSlice";
 
-function Trending() {
+function Other() {
   const cakes = useSelector(selectOther);
 
   return (
-    <div className="trending">
-      <h3>Other</h3>
-      <div className="trending__row">
+    <div className="other">
+      <p>Other</p>
+      <div className="other__row">
         {cakes &&
           cakes.map((cake, key) => (
-            <div className="trending__card" key={key}>
+            <div className="other__card" key={key}>
               <Link to={`/detail/` + cake.id}>
                 <img
-                  className="trending__image"
+                  className="other__image"
                   src={cake.cardImg}
                   alt={cake.title}
                 />
@@ -28,4 +28,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default Other;

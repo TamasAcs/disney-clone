@@ -1,9 +1,9 @@
 import React from "react";
 import "./ImgSlider.css";
-import badging from "./images/slider-badging.jpg";
-import scale from "./images/slider-scale.jpg";
-import badag from "./images/slider-badag.jpg";
-import scales from "./images/slider-scales.jpg";
+import cake1 from "./images/slider-cake1.webp";
+import cake2 from "./images/slider-cake2.webp";
+import cupcake1 from "./images/slider-cupcake1.webp";
+import cupcake2 from "./images/slider-cupcake2.webp";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,33 +17,31 @@ function ImgSlider(props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    };
-    
+  };
 
   return (
-    
-      <Slider {...settings} className="imgSlider__carousel">
+    <Slider {...settings} className="imgSlider__carousel">
       <div className="imgSlider__wrap">
         <div className="imgSlider__wrapEach">
-          <img src={badging} alt="" />
-          </div>
+          <img src={cake1} alt="" />
         </div>
+      </div>
       <div className="imgSlider__wrap">
         <div className="imgSlider__wrapEach">
-          <img src={scale} alt="" />
-          </div>
+          <img src={cake2} alt="" />
         </div>
-        <div className="imgSlider__wrap">
-          <div className="imgSlider__wrapEach">
-          <img src={badag} alt="" />
-          </div>
+      </div>
+      <div className="imgSlider__wrap">
+        <div className="imgSlider__wrapEach">
+          <img src={cupcake1} alt="" />
         </div>
-        <div className="imgSlider__wrap">
-          <div className="imgSlider__wrapEach">
-          <img src={scales} alt="" />
-          </div>
+      </div>
+      <div className="imgSlider__wrap">
+        <div className="imgSlider__wrapEach">
+          <img src={cupcake2} alt="" />
         </div>
-        </Slider>
+      </div>
+    </Slider>
   );
 }
 

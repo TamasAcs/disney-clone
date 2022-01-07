@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Detail.css";
 import Header from "./Header";
-import playBlack from "./images/play-icon-black.png";
-import playWhite from "./images/play-icon-white.png";
-import groupIcon from "./images/group-icon.png";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import db from "./firebase";
+import bg from "./images/detail-background.webp";
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 function Detail(props) {
+  const history = useHistory();
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
 
@@ -32,34 +32,35 @@ function Detail(props) {
       <Header />
       <div className="detail__body">
         <div className="detail__background">
-          <img src={detailData.backgroundImg} alt={detailData.title} />
+          <img src={bg} alt="" />
         </div>
-        <div className="detail__imageTitle">
-          <img src={detailData.titleImg} alt={detailData.title} />
-        </div>
-
-        <div className="detail__content">
-          <div className="detail__controls">
-            <div className="detail__player">
-              <img src={playBlack} alt="" />
-              <h4>PLAY</h4>
+        <div className="detail__main__description">
+          <div className="detail__imageTitle">
+            <img src={detailData.titleImg} alt={detailData.title} />
+          </div>
+          <div className="detail__main__description__right">
+          <div className="detail__title">{detailData.title}</div>
+            <div className="detail__subTitle">{detailData.subTitle}</div>
+            <div className="detail__price">
+              <p>FROM &nbsp;</p>
+            <div className="detail__price__amount">{detailData.price}</div>
             </div>
-            <div className="detail__trailer">
-              <img src={playWhite} alt="" />
-              <h4>TRAILER</h4>
-            </div>
-            <div className="detail__add">
-              <span></span>
-              <span></span>
-            </div>
-            <div className="detail__group">
-              <div className="detail__groupCircle">
-                <img src={groupIcon} alt="" />
-              </div>
+            <div className="detail__description">{detailData.description}</div>
+            <p className="detail__allergy__p">Allergen Information:</p>
+            <div className="detail__allergy">{detailData.allergy}</div>
+            <div className="detail__content">
+                
+                <div className="detail__add">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="detail__contact">
+                  <div className="detail__contact__btn" onClick={() => history.push("/contact")}>
+                    <MailOutlineIcon/>
+                  </div>
+                </div>
             </div>
           </div>
-          <div className="detail__subTitle">{detailData.subTitle}</div>
-          <div className="detail__description">{detailData.description}</div>
         </div>
       </div>
     </div>

@@ -4,18 +4,22 @@ import "./Cakes.css";
 import { useSelector } from "react-redux";
 import { selectCakes } from "./features/cake/cakeSlice";
 
-function Recommended(props) {
+function Cakes(props) {
   const cakes = useSelector(selectCakes);
 
   return (
-    <div className="recommended">
-      <h3>Cakes For You</h3>
-      <div className="recommended__row">
-      {cakes &&
+    <div className="cakes">
+      <p>Cakes</p>
+      <div className="cakes__row">
+        {cakes &&
           cakes.map((cake, key) => (
-            <div className="recommended__card" key={key}>
+            <div className="cakes__card" key={key}>
               <Link to={`/detail/` + cake.id}>
-                <img className="recommended__image" src={cake.cardImg} alt={cake.title} />
+                <img
+                  className="cakes__image"
+                  src={cake.cardImg}
+                  alt={cake.title}
+                />
               </Link>
             </div>
           ))}
@@ -24,4 +28,4 @@ function Recommended(props) {
   );
 }
 
-export default Recommended;
+export default Cakes;
