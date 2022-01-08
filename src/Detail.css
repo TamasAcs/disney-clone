@@ -61,35 +61,6 @@
   margin: 24px 0px;
   min-height: 56px;
 }
-.detail__add {
-  margin-right: 16px;
-  height: 44px;
-  width: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  border: 2px solid #efc38a;
-  cursor: pointer;
-}
-.detail__add:hover {
-  background: rgba(170, 170, 170, 0.4);
-}
-.detail__add > span {
-  background-color: #efc38a;
-  display: inline-block;
-}
-.detail__add > span:first-child {
-  height: 2px;
-  transform: translate(1px, 0px) rotate(0deg);
-  width: 16px;
-}
-.detail__add > span:nth-child(2) {
-  height: 16px;
-  transform: translateX(-8px) rotate(0deg);
-  width: 2px;
-}
 .detail__contact {
   height: 44px;
   width: 44px;

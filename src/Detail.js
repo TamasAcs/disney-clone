@@ -50,10 +50,6 @@ function Detail(props) {
             <div className="detail__allergy">{detailData.allergy}</div>
             <div className="detail__content">
                 
-                <div className="detail__add">
-                  <span></span>
-                  <span></span>
-                </div>
                 <div className="detail__contact">
                   <div className="detail__contact__btn" onClick={() => history.push("/contact")}>
                     <MailOutlineIcon/>

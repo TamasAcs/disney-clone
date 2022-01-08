@@ -90,15 +90,6 @@ input[type='text']::placeholder{
 .header__search{
   position: relative;
 }
-.header__search--icon{
-  border-radius: 50%;
-  background: url('./images/search-icon.svg') no-repeat 50% 50%;
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  right: 5px;
-  top: 2px;
-}
 
 @media only screen and (max-width: 560px) {
   .header__logo > img {

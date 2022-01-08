@@ -1,7 +1,6 @@
 .imgSlider__carousel {
   margin-top: 20px;
   width: 80%;
-  display: flex;
   justify-content: center;
   margin: auto;
 }

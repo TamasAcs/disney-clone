@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "sweet-craft-f4d8b"
-  }
+    "default": "react-bakery",
+    "production": "react-bakery"
+  },
+  "targets": {}
 }
